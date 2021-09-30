@@ -1,6 +1,10 @@
 # Clipper App
+App for asking questions and recieving answers from registrated users. 
+
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Using MySql Database
 
 ## Available Scripts
 
@@ -34,8 +38,8 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 -Bugs on updating user info \
 -No notification when somebody answers users question\
 -hot questions on home page - API is ready //todo frontend\
--add questions to user struct in backend, update API\
-
+-add questions to user struct in backend, update API \
+-Add thubms up functionality \
 
 
 To run backend 

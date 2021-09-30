@@ -42,7 +42,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 
 
-### Tasks not:
+### Tasks not done:
 -Do not refresh the browser window, it will log out without deleting cookie //todo \
 -Bugs on updating user info \
 -No notification when somebody answers users question\

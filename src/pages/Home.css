@@ -1,0 +1,26 @@
+.question {
+    padding-top: 2%;
+    padding-left: 2%;
+    padding-right: 2%;
+    cursor: pointer;
+
+}
+
+.border {
+    border-radius: 10px;
+}
+
+.thumbsup {
+    padding-top: 2%;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.forma {
+    margin-bottom: 10%;
+}
+
+li {
+    margin-bottom: 15%;
+    border-bottom: 1px grey solid;
+}

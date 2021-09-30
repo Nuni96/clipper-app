@@ -3,7 +3,7 @@ App for asking questions and recieving answers from registrated users.
 
 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).\
 Using MySql Database
 
 ## Available Scripts

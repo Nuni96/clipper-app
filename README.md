@@ -32,8 +32,17 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Tasks done
+-Login page \
+-Registration page \
+-Profile/Admin Page \
+-Home Page (missing some functionalities) \
+-Question Page \
+-JWT for protected routes \
 
-### todo:
+
+
+### Tasks not:
 -Do not refresh the browser window, it will log out without deleting cookie //todo \
 -Bugs on updating user info \
 -No notification when somebody answers users question\

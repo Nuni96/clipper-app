@@ -1,7 +1,7 @@
 package main
 
 import (
-	"log"
+	"fmt"
 	"myapp/database"
 	"myapp/routes"
 	"os"
@@ -12,7 +12,9 @@ import (
 
 func main() {
 	port := os.Getenv("PORT")
-	log.Println(port)
+	fmt.Println(port)
+	dns := os.Getenv("DATABASE_URL")
+	fmt.Println(dns)
 	database.Connect()
 
 	app := fiber.New()

@@ -17,7 +17,7 @@ const Admin = ({ name2, lastname2, email2, setName, setLastname, setEmail }) => 
         password: password1,
     }
     console.log(name1,lastname1,email1,password1)
-    const response = await fetch("https://www.cleardb.com/service/1.0/api/admin", {
+    const response = await fetch("https://www.cleardb.com/service/1.0/api/api/admin", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       credentials: "include",

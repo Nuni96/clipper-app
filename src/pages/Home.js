@@ -34,7 +34,7 @@ const Home = () => {
   };
   useEffect(() => {
     (async () => {
-      const response = await fetch("eu-cdbr-west-01.cleardb.com/api/questions", {
+      const response = await fetch("eu-cdbr-west-01.cleardb.com/api/api/questions", {
         headers: { "Content-Type": "application/json" },
       });
       const content = await response.json()
@@ -48,7 +48,7 @@ const Home = () => {
   
   const questionHandler = async (q, e) => {
     e.preventDefault()
-    await fetch('https://www.cleardb.com/service/1.0/api/thumbsup',{
+    await fetch('https://www.cleardb.com/service/1.0/api/api/thumbsup',{
       method: 'PUT',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

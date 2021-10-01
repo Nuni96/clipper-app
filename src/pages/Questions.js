@@ -47,7 +47,7 @@ const Questions = ({ logedin }) => {
 
   const submitQuestion = async (e) => {
     e.preventDefault();
-    await fetch("https://www.cleardb.com/service/1.0/api/questions", {
+    await fetch("https://www.cleardb.com/service/1.0/api/api/questions", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -60,7 +60,7 @@ const Questions = ({ logedin }) => {
   };
   const questionHandler = async (q, e) => {
     e.preventDefault()
-    await fetch('https://www.cleardb.com/service/1.0/api/thumbsup',{
+    await fetch('https://www.cleardb.com/service/1.0/api/api/thumbsup',{
       method: 'PUT',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

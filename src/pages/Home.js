@@ -26,8 +26,8 @@ import './Home.css'
 ];
  */
 const port = process.env.PORT;
-const endpoint = 'https://clipper-app-mop.herokuapp.com';
-
+/* const endpoint = 'https://clipper-app-mop.herokuapp.com';
+ */
 const Home = () => {
   const [question, setQuestion] = useState([])
   const [manage, setManage] = useState(true);
@@ -37,7 +37,7 @@ const Home = () => {
   };
   useEffect(() => {
     (async () => {
-      const response = await fetch(endpoint +"/api/questions", {
+      const response = await fetch(port +"/api/questions", {
         headers: { "Content-Type": "application/json" },
       });
       const content = await response.json()
@@ -51,7 +51,7 @@ const Home = () => {
   
   const questionHandler = async (q, e) => {
     e.preventDefault()
-    await fetch(endpoint +'/api/thumbsup',{
+    await fetch(port +'/api/thumbsup',{
       method: 'PUT',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

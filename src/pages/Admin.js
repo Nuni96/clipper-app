@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router";
 const port = process.env.PORT;
-const endpoint = 'https://clipper-app-mop.herokuapp.com';
-
+/* const endpoint = 'https://clipper-app-mop.herokuapp.com';
+ */
 const Admin = ({ name2, lastname2, email2, setName, setLastname, setEmail }) => {
   const [name1, setName1] = useState("");
   const [lastname1, setLastname1] = useState("");
@@ -19,7 +19,7 @@ const Admin = ({ name2, lastname2, email2, setName, setLastname, setEmail }) => 
         password: password1,
     }
     console.log(name1,lastname1,email1,password1)
-    const response = await fetch(endpoint +"/api/admin", {
+    const response = await fetch(port +"/api/admin", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       credentials: "include",

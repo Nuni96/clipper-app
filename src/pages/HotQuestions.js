@@ -1,37 +1,28 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import './Home.css'
-/* var questions = [
-  {
-    id:0,
-    question:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    thumbsup: 3,
-    answers: ["first answer", "second answer"],
-  },
-  {
-    id:1,
-    question:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    thumbsup: 5,
-    answers: ["first answer", "second answer"],
-  },
-  {
-    id:2,
-    question:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    thumbsup: 2,
-    answers: ["first answer", "second answer", "third answer"],
-  },
-];
- */
-const Home = () => {
-  const [question, setQuestion] = useState([])
+
+const HotQuestions = () => {
+    const [question, setQuestion] = useState([])
   const [manage, setManage] = useState(true);
   const [loadmore, setLoadmore] = useState(20)
   const changeManage = () => {
     setManage(!manage);
   };
+ /*  useEffect(() => {
+    (async () => {
+      const response = await fetch("http://localhost:8000/api/questions", {
+        headers: { "Content-Type": "application/json" },
+      });
+      const content = await response.json()
+      console.log(content)
+      setQuestion(content)
+    })()
+    return () => {
+      setQuestion([])
+    }
+  }, []) */
+
   useEffect(() => {
     (async () => {
       const response = await fetch("http://localhost:8000/api/questions", {
@@ -63,9 +54,9 @@ const Home = () => {
   }
   return (
     <Fragment>
-      <h2>Home Page &nbsp;|&nbsp; <Link to='/hot-questions'>Hot Questions</Link></h2>
+      <h2><Link to='/'>Home Page</Link> &nbsp;|&nbsp; Hot Questions</h2>
       <ul>
-        {question.sort((a,b) => { return b.id - a.id}).slice(0, loadmore).map((q) => {
+        {question.sort((a,b) => { return b.thumbsup - a.thumbsup}).slice(0, loadmore).map((q) => {
           return (
             
             <li key={q.id}>
@@ -85,4 +76,6 @@ const Home = () => {
   );
 };
 
-export default Home;
+
+
+export default HotQuestions

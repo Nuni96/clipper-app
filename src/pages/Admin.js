@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router";
 
-const Admin = ({ name, lastname, email, setName, setLastname, setEmail }) => {
+const Admin = ({ name2, lastname2, email2, setName, setLastname, setEmail }) => {
   const [name1, setName1] = useState("");
   const [lastname1, setLastname1] = useState("");
   const [email1, setEmail1] = useState("");
@@ -10,19 +10,30 @@ const Admin = ({ name, lastname, email, setName, setLastname, setEmail }) => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    await fetch("http://localhost:8000/api/admin", {
+    let data = {
+        name: name1,
+        lastname: lastname1,
+        email: email1,
+        password: password1,
+    }
+    console.log(name1,lastname1,email1,password1)
+    const response = await fetch("http://localhost:8000/api/admin", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name1,
-        lastname1,
-        email1,
-        password1,
-      }),
+      credentials: "include",
+      body: JSON.stringify(
+        /* name: name1,
+        lastname: lastname1,
+        email: email1,
+        password: password1, */
+        data
+      ),
     });
-    /* setName(name1);
-    setLastname(lastname1);
-    setEmail(email1); */
+    const content = await response.json()
+    console.log(content.message)
+    setName1('');
+    setLastname1('');
+    setEmail1('');
     setRedirect(true);
   };
   if (redirect) {
@@ -33,13 +44,13 @@ const Admin = ({ name, lastname, email, setName, setLastname, setEmail }) => {
     <div>
       <ul className="list-group">
         <li className="list-group-item">
-          Name: <strong>{name}</strong>
+          Name: <strong>{name2}</strong>
         </li>
         <li className="list-group-item">
-          Lastname: <strong>{lastname}</strong>
+          Lastname: <strong>{lastname2}</strong>
         </li>
         <li className="list-group-item">
-          Email: <strong>{email}</strong>
+          Email: <strong>{email2}</strong>
         </li>
       </ul>
       <form onSubmit={submitHandler}>
@@ -49,15 +60,15 @@ const Admin = ({ name, lastname, email, setName, setLastname, setEmail }) => {
         </h5>
         <h5 className="h5 mb-3 fw-normal">
           **Change the fields you would like to edit. All fields must be filled.
-          Password is requiered. If you want to set a new password, simply
+          Password is required. If you want to set a new password, simply
           submit this form with new password!
         </h5>
+        <h5 className="h5 mb-3 fw-normal">***You will need to logout and login back again to update your info!</h5>
         <div className="form-floating">
           <input
             type="text"
             className="form-control"
             placeholder="New name"
-            value={name}
             required
             onChange={(e) => setName1(e.target.value)}
           />
@@ -68,7 +79,6 @@ const Admin = ({ name, lastname, email, setName, setLastname, setEmail }) => {
             type="text"
             className="form-control"
             placeholder="New lastname"
-            value={lastname}
             required
             onChange={(e) => setLastname1(e.target.value)}
           />
@@ -79,7 +89,6 @@ const Admin = ({ name, lastname, email, setName, setLastname, setEmail }) => {
             type="email"
             className="form-control"
             placeholder="name@example.com"
-            value={email}
             required
             onChange={(e) => setEmail1(e.target.value)}
           />

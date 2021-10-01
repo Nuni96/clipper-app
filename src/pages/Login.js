@@ -18,9 +18,8 @@ function Login({ wrongMessage, setWrongmessage, setLogedin }) {
       }),
     });
     const content = await response.json();
-      setWrongmessage(content.message);
-      setRedirect(true);
-    
+    setRedirect(true);
+    setWrongmessage(content.message);
   };
 
   if (redirect) {

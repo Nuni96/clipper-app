@@ -8,6 +8,7 @@ import Register from "./pages/Register";
 import Admin from "./pages/Admin";
 import MyQuestions from "./pages/MyQuestions";
 import Questions from "./pages/Questions";
+import HotQuestions from "./pages/HotQuestions";
 
 function App() {
   const [logedin, setLogedin] = useState(false);
@@ -24,6 +25,7 @@ function App() {
       });
       const content = await response.json();
       console.log(content.name, logedin);
+      // eslint-disable-next-line eqeqeq
       if (wrongMessage == "success") {
         setLogedin(true);
         setName(content.name);
@@ -33,6 +35,23 @@ function App() {
     })();
   }, [logedin, wrongMessage]);
 
+  useEffect(() => {
+    (async () => {
+      const response = await fetch("http://localhost:8000/api/user", {
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+      });
+      const content = await response.json();
+      // eslint-disable-next-line eqeqeq
+      if (typeof content.name !== 'undefined' && content.name !== "") {
+        setLogedin(true);
+        setName(content.name);
+        setLastname(content.lastname);
+        setEmail(content.email);
+      }
+      console.log(content.name, logedin, 'message' + wrongMessage);
+    })();
+  });
   
   return (
     <Router>
@@ -99,15 +118,16 @@ function App() {
                   path="/admin"
                   component={() => (
                     <Admin
-                      name={name}
-                      lastname={lastname}
-                      email={email}
+                      name2={name}
+                      lastname2={lastname}
+                      email2={email}
                       setName={setName}
                       setLastname={setLastname}
                       setEmail={setEmail}
                     />
                   )}
                 ></Route>
+                <Route exact path='/hot-questions' component={()=><HotQuestions />} />
                 <Route path="/questions" component={() => <Questions logedin={logedin} />} />
                 <Route path="/my-questions" component={MyQuestions} />
               </Switch>

@@ -9,7 +9,7 @@ import Admin from "./pages/Admin";
 import MyQuestions from "./pages/MyQuestions";
 import Questions from "./pages/Questions";
 import HotQuestions from "./pages/HotQuestions";
-
+const port = process.env.PORT;
 function App() {
   const [logedin, setLogedin] = useState(false);
   const [name, setName] = useState("");
@@ -19,7 +19,7 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      const response = await fetch("eu-cdbr-west-01.cleardb.com/api/user", {
+      const response = await fetch("https://www.cleardb.com/service/1.0/api/user", {
         headers: { "Content-Type": "application/json" },
         credentials: "include",
       });
@@ -37,7 +37,7 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      const response = await fetch("eu-cdbr-west-01.cleardb.com/api/user", {
+      const response = await fetch("https://www.cleardb.com/service/1.0/api/user", {
         headers: { "Content-Type": "application/json" },
         credentials: "include",
       });

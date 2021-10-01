@@ -48,7 +48,7 @@ const Home = () => {
   
   const questionHandler = async (q, e) => {
     e.preventDefault()
-    await fetch('eu-cdbr-west-01.cleardb.com/api/thumbsup',{
+    await fetch('https://www.cleardb.com/service/1.0/api/thumbsup',{
       method: 'PUT',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

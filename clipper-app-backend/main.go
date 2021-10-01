@@ -24,5 +24,5 @@ func main() {
 	})) //if we don't add this browser will not allow request
 
 	routes.Setup(app)
-	app.Listen(":8000")
+	app.Listen(":" + port)
 }

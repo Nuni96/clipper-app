@@ -11,7 +11,7 @@ function Register() {
   const submitHandler = async (e) => {
     e.preventDefault();
 
-    await fetch("/api/register", {
+    await fetch("eu-cdbr-west-01.cleardb.com/api/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

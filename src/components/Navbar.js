@@ -5,7 +5,7 @@ const Navbar = ({ setLogedin, logedin, setWrongmessage }) => {
   let menu;
 
   const logout = async () => {
-    await fetch("/api/logout", {
+    await fetch("eu-cdbr-west-01.cleardb.com/api/logout", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",

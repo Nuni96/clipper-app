@@ -25,7 +25,7 @@ const HotQuestions = () => {
 
   useEffect(() => {
     (async () => {
-      const response = await fetch("/api/questions", {
+      const response = await fetch("eu-cdbr-west-01.cleardb.com/api/questions", {
         headers: { "Content-Type": "application/json" },
       });
       const content = await response.json()
@@ -39,7 +39,7 @@ const HotQuestions = () => {
   
   const questionHandler = async (q, e) => {
     e.preventDefault()
-    await fetch('/api/thumbsup',{
+    await fetch('eu-cdbr-west-01.cleardb.com/api/thumbsup',{
       method: 'PUT',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

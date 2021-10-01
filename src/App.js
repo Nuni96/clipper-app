@@ -19,7 +19,7 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      const response = await fetch("/api/user", {
+      const response = await fetch("eu-cdbr-west-01.cleardb.com/api/user", {
         headers: { "Content-Type": "application/json" },
         credentials: "include",
       });
@@ -37,7 +37,7 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      const response = await fetch("/api/user", {
+      const response = await fetch("eu-cdbr-west-01.cleardb.com/api/user", {
         headers: { "Content-Type": "application/json" },
         credentials: "include",
       });

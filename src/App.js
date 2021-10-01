@@ -10,6 +10,8 @@ import MyQuestions from "./pages/MyQuestions";
 import Questions from "./pages/Questions";
 import HotQuestions from "./pages/HotQuestions";
 const port = process.env.PORT;
+const endpoint = 'https://clipper-app-mop.herokuapp.com';
+
 function App() {
   const [logedin, setLogedin] = useState(false);
   const [name, setName] = useState("");
@@ -19,7 +21,7 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      const response = await fetch(port + "/api/user", {
+      const response = await fetch(endpoint + "/api/user", {
         headers: { "Content-Type": "application/json" },
         credentials: "include",
       });
@@ -37,7 +39,7 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      const response = await fetch(port + "/api/user", {
+      const response = await fetch(endpoint + "/api/user", {
         headers: { "Content-Type": "application/json" },
         credentials: "include",
       });

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Login.css";
 import { Redirect } from "react-router";
 const port = process.env.PORT;
+const endpoint = 'https://clipper-app-mop.herokuapp.com';
 
 function Login({ wrongMessage, setWrongmessage, setLogedin }) {
   const [email, setEmail] = useState("");
@@ -10,7 +11,7 @@ function Login({ wrongMessage, setWrongmessage, setLogedin }) {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    const response = await fetch(port +"/api/login", {
+    const response = await fetch(endpoint +"/api/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include", //getting cookies

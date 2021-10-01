@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router";
+const port = process.env.PORT;
 
 function Register() {
   const [name, setName] = useState("");
@@ -11,7 +12,7 @@ function Register() {
   const submitHandler = async (e) => {
     e.preventDefault();
 
-    await fetch("https://www.cleardb.com/service/1.0/api/api/register", {
+    await fetch(port +"/api/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

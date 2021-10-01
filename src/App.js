@@ -19,7 +19,7 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      const response = await fetch("https://www.cleardb.com/service/1.0/api/api/user", {
+      const response = await fetch(port + "/api/user", {
         headers: { "Content-Type": "application/json" },
         credentials: "include",
       });
@@ -37,7 +37,7 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      const response = await fetch("https://www.cleardb.com/service/1.0/api/api/user", {
+      const response = await fetch(port + "/api/user", {
         headers: { "Content-Type": "application/json" },
         credentials: "include",
       });

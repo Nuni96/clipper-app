@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Fragment } from "react";
 import "./Home.css";
+const port = process.env.PORT;
 
 const Questions = ({ logedin }) => {
   const [question, setQuestion] = useState([]);
@@ -12,7 +13,7 @@ const Questions = ({ logedin }) => {
   };
   useEffect(() => {
     (async () => {
-      const response = await fetch("/api/questions", {
+      const response = await fetch(port +"/api/questions", {
         headers: { "Content-Type": "application/json" },
       });
       const content = await response.json();
@@ -28,7 +29,7 @@ const Questions = ({ logedin }) => {
   const submitHandler = async (id, question, thumbsup, e) => {
     e.preventDefault();
 
-    const response = await fetch("/api/answer", {
+    const response = await fetch(port +"/api/answer", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -47,7 +48,7 @@ const Questions = ({ logedin }) => {
 
   const submitQuestion = async (e) => {
     e.preventDefault();
-    await fetch("https://www.cleardb.com/service/1.0/api/api/questions", {
+    await fetch(port +"/api/questions", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -60,7 +61,7 @@ const Questions = ({ logedin }) => {
   };
   const questionHandler = async (q, e) => {
     e.preventDefault()
-    await fetch('https://www.cleardb.com/service/1.0/api/api/thumbsup',{
+    await fetch(port +'/api/thumbsup',{
       method: 'PUT',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

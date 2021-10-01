@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router";
+const port = process.env.PORT;
 
 const Admin = ({ name2, lastname2, email2, setName, setLastname, setEmail }) => {
   const [name1, setName1] = useState("");
@@ -17,7 +18,7 @@ const Admin = ({ name2, lastname2, email2, setName, setLastname, setEmail }) => 
         password: password1,
     }
     console.log(name1,lastname1,email1,password1)
-    const response = await fetch("https://www.cleardb.com/service/1.0/api/api/admin", {
+    const response = await fetch(port +"/api/admin", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       credentials: "include",

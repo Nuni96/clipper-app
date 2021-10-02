@@ -4,7 +4,8 @@ App for asking questions and recieving answers from registrated users.
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).\
-Using MySql Database
+This project is using MySql Database
+
 
 ## Available Scripts
 
@@ -32,26 +33,14 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-### Tasks done
--Login page \
--Registration page \
--Profile/Admin Page \
--Home Page (missing some functionalities) \
--Question Page \
--JWT for protected routes \
-
 
 
 ### Tasks not done:
--Do not refresh the browser window, it will log out without deleting cookie //todo \
--Bugs on updating user info \
+-Editing and deleting answers from current user\
 -No notification when somebody answers users question\
--hot questions on home page - API is ready //todo frontend\
--add questions to user struct in backend, update API \
--Add thubms up functionality \
 
 
 To run backend 
 ### go run main.go
-### backend is on [http://localhost:8000](http://localhost:8000)
+### backend is on [http://localhost:8080](http://localhost:8080)
 

@@ -48,13 +48,13 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
   - verify that connection to database was made and tables are set
 
 2. To run frontend
-### npm start
+   -npm start
 
 3. To run backend 
-### cd clipper-app-backend
-### go run main.go
+   -cd clipper-app-backend
+   -go run main.go
 
 ### backend is hosted on [http://localhost:8080](http://localhost:8080)
 
 
-Enjoy my first ReactJS-Golang-MySQL App built from scratch
+## Enjoy my first ReactJS-Golang-MySQL App built from scratch

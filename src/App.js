@@ -9,7 +9,7 @@ import Admin from "./pages/Admin";
 import MyQuestions from "./pages/MyQuestions";
 import Questions from "./pages/Questions";
 import HotQuestions from "./pages/HotQuestions";
-const port = 3306;
+const port = process.env.PORT;
 /* const endpoint = 'https://clipper-app-mop.herokuapp.com';
  */
 function App() {

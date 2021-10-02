@@ -1,6 +1,5 @@
 import React, { useState, useEffect, Fragment } from "react";
 import "./Home.css";
-const port = 3306;
 
 const Questions = ({ logedin }) => {
   const [question, setQuestion] = useState([]);
@@ -13,7 +12,7 @@ const Questions = ({ logedin }) => {
   };
   useEffect(() => {
     (async () => {
-      const response = await fetch(`eu-cdbr-west-01.cleardb.com:${port}/api/questions`, {
+      const response = await fetch("http://localhost:8080/api/questions", {
         headers: { "Content-Type": "application/json" },
       });
       const content = await response.json();
@@ -29,7 +28,7 @@ const Questions = ({ logedin }) => {
   const submitHandler = async (id, question, thumbsup, e) => {
     e.preventDefault();
 
-    const response = await fetch(`eu-cdbr-west-01.cleardb.com:${port}/api/answer`, {
+    const response = await fetch("http://localhost:8080/api/answer", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -48,7 +47,7 @@ const Questions = ({ logedin }) => {
 
   const submitQuestion = async (e) => {
     e.preventDefault();
-    await fetch(`eu-cdbr-west-01.cleardb.com:${port}/api/questions`, {
+    await fetch("http://localhost:8080/api/questions", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -61,7 +60,7 @@ const Questions = ({ logedin }) => {
   };
   const questionHandler = async (q, e) => {
     e.preventDefault()
-    await fetch(`http://localhost:8080/api/thumsup`,{
+    await fetch("http://localhost:8080/api/thumsup",{
       method: 'PUT',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

@@ -1,14 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
-const port = 3306;
-/* const endpoint = 'https://clipper-app-mop.herokuapp.com';
- */
+
 const Navbar = ({ setLogedin, logedin, setWrongmessage }) => {
   let menu;
 
   const logout = async () => {
-    await fetch(`http://localhost:8080/api/logout`, {
+    await fetch("http://localhost:8080/api/logout", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",

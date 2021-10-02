@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import './Home.css'
-const port = process.env.PORT;
+const port = 3306;
 /* const endpoint = 'https://clipper-app-mop.herokuapp.com';
  */
 const HotQuestions = () => {
@@ -27,7 +27,7 @@ const HotQuestions = () => {
 
   useEffect(() => {
     (async () => {
-      const response = await fetch(port +"/api/questions", {
+      const response = await fetch(`eu-cdbr-west-01.cleardb.com:${port}/api/questions`, {
         headers: { "Content-Type": "application/json" },
       });
       const content = await response.json()
@@ -41,7 +41,7 @@ const HotQuestions = () => {
   
   const questionHandler = async (q, e) => {
     e.preventDefault()
-    await fetch(port +'/api/thumbsup',{
+    await fetch(`eu-cdbr-west-01.cleardb.com:${port}/api/thumbsup`,{
       method: 'PUT',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

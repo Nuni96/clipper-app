@@ -9,7 +9,7 @@ import Admin from "./pages/Admin";
 import MyQuestions from "./pages/MyQuestions";
 import Questions from "./pages/Questions";
 import HotQuestions from "./pages/HotQuestions";
-const port = process.env.PORT;
+const port = 3306;
 /* const endpoint = 'https://clipper-app-mop.herokuapp.com';
  */
 function App() {
@@ -21,7 +21,7 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      const response = await fetch(port + "/api/user", {
+      const response = await fetch(`eu-cdbr-west-01.cleardb.com:${port}/api/user`, {
         headers: { "Content-Type": "application/json" },
         credentials: "include",
       });
@@ -35,11 +35,12 @@ function App() {
         setEmail(content.email);
       }
     })();
+    console.log(port)
   }, [logedin, wrongMessage]);
 
   useEffect(() => {
     (async () => {
-      const response = await fetch(port + "/api/user", {
+      const response = await fetch(`eu-cdbr-west-01.cleardb.com:${port}/api/user`, {
         headers: { "Content-Type": "application/json" },
         credentials: "include",
       });

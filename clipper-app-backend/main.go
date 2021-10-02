@@ -12,6 +12,9 @@ import (
 
 func main() {
 	port := os.Getenv("PORT")
+	if len(port) == 0 {
+		port = "8080"
+	}
 	fmt.Println(port)
 	dns := os.Getenv("DATABASE_URL")
 	fmt.Println(dns)

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router";
-const port = process.env.PORT;
-const endpoint = 'https://clipper-app-mop.herokuapp.com';
-
+const port = 3306;
+/* const endpoint = 'https://clipper-app-mop.herokuapp.com';
+ */
 function Register() {
   const [name, setName] = useState("");
   const [lastname, setLastname] = useState("");
@@ -13,7 +13,7 @@ function Register() {
   const submitHandler = async (e) => {
     e.preventDefault();
 
-    await fetch(endpoint + "/api/register", {
+    await fetch(`eu-cdbr-west-01.cleardb.com:${port}/api/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

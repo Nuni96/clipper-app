@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Login.css";
 import { Redirect } from "react-router";
-const port = process.env.PORT;
+const port = 3306;
 /* const endpoint = 'https://clipper-app-mop.herokuapp.com';
  */
 function Login({ wrongMessage, setWrongmessage, setLogedin }) {
@@ -11,7 +11,7 @@ function Login({ wrongMessage, setWrongmessage, setLogedin }) {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    const response = await fetch(port +"/api/login", {
+    const response = await fetch(`eu-cdbr-west-01.cleardb.com:${port}/api/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include", //getting cookies

@@ -1,12 +1,13 @@
 import React, { useState, useEffect, Fragment } from "react";
 import "./Home.css";
 
-const Questions = ({ logedin }) => {
+const Questions = ({ logedin, name3, lastname3, id3, email3, answers3 }) => {
   const [question, setQuestion] = useState([]);
   const [answer, setAnswer] = useState("");
   const [loadmore, setLoadmore] = useState(20);
   const [manage, setManage] = useState(true);
   const [newQuestion, setNewQuestion] = useState("");
+  const [answerValue, setAnswerValue] = useState("");
   const changeManage = () => {
     setManage(!manage);
   };
@@ -39,15 +40,25 @@ const Questions = ({ logedin }) => {
       }),
     });
     setAnswer("");
+    setAnswerValue("");
     console.log(answer);
     const content = await response.json();
+    const response1 = await fetch("http://localhost:8080/api/update-answer", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        id: id3,
+      }),
+    }) 
+    const content1 = await response1.json()
+    console.log(content1)
     changeManage();
     console.log(content);
   };
 
   const submitQuestion = async (e) => {
     e.preventDefault();
-    await fetch("127.0.0.1:8080/api/questions", {
+    const response = await fetch("http://localhost:8080/api/questions", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -55,20 +66,43 @@ const Questions = ({ logedin }) => {
         thumbsup: "0",
       }),
     });
+    const content = await response.json();
+    console.log(content);
+    const response1 = await fetch("http://localhost:8080/api/my-questions", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        id: id3,
+        name: name3,
+        lastname: lastname3,
+        email: email3,
+        answers: answers3,
+        questions: [
+          {
+            id: content.id,
+            question: content.question,
+            thumbsup: content.thumbsup,
+            answer: content.answers,
+          },
+        ],
+      }),
+    });
+    const content2 = await response1.json()
+    console.log(content2)
     setNewQuestion("");
     changeManage();
   };
   const questionHandler = async (q, e) => {
-    e.preventDefault()
-    await fetch("http://localhost:8080/api/thumbsup",{
-      method: 'PUT',
+    e.preventDefault();
+    await fetch("http://localhost:8080/api/thumbsup", {
+      method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         id: q,
-      })
-    })
-    changeManage()
-  }
+      }),
+    });
+    changeManage();
+  };
   return (
     <Fragment>
       <h2>Questions Page</h2>
@@ -94,59 +128,69 @@ const Questions = ({ logedin }) => {
       <ul>
         <h1 className="h1 mb-3 fw-normal">All Questions and Answers!</h1>
 
-        {question.sort((a,b) => { return b.id - a.id}).slice(0, loadmore).map((q, i) => {
-          return (
-            <li key={q.id}>
-              <div key={'container'+ q.id} className="border">
-                <p className="question" key={'Question'+ q.id}>
-                  {q.question}
-                </p>
-                <p className="thumbsup"onClick={(e) => questionHandler(q.id, e)} key={'Likes'+ q.id}>
-                <strong>{q.thumbsup}&nbsp;Likes</strong>
-                </p>
-                <p key={'logedin'+ q.id}>{logedin}</p>
-              </div>
-              <hr className="mb-3" />
-              {logedin && (
-                <form
-                  key={'Forma'+ q.id}
-                  onSubmit={(e) =>
-                    submitHandler(q.id, q.question, q.thumbsup, e)
-                  }
-                >
-                  <div key={'container1'} className="form-group">
-                    <label htmlFor="exampleInputPassword1">Your answer</label>
-                    <input
-                      key={'Answeeer' + q.id}
-                      type="text"
-                      className="form-control"
-                      id="exampleInputPassword1"
-                      placeholder="Answer"
-                      value={answer}
-                      onChange={(e) => setAnswer(e.target.value)}
-                    />
-                  </div>
-                  <button
-                    className="w-100 btn btn-lg btn-primary"
-                    type="submit"
-                    key={'button'+ q.id}
-                  >
-                    Submit
-                  </button>
-                </form>
-              )}
-              <h5 key={'Heading'+ q.id} className="h5 mb-3 fw-normal"><strong>Previous answers:</strong></h5>
-              {q.answers.map((x, a) => {
-                return (
-                  <p key={'Answer'+ x.id}>
-                    {a + 1}: {x.Answer}
+        {question
+          .sort((a, b) => {
+            return b.id - a.id;
+          })
+          .slice(0, loadmore)
+          .map((q, i) => {
+            return (
+              <li key={q.id}>
+                <div key={"container" + q.id} className="border">
+                  <p className="question" key={"Question" + q.id}>
+                    <strong>Question: &nbsp;</strong>{q.question}
                   </p>
-                  
-                );
-              })}
-            </li>
-          );
-        })}
+                  <p
+                    className="thumbsup"
+                    onClick={(e) => questionHandler(q.id, e)}
+                    key={"Likes" + q.id}
+                  >
+                    <strong>👍 &nbsp;{q.thumbsup}&nbsp;Likes</strong>
+                  </p>
+                  <p key={"logedin" + q.id}>{logedin}</p>
+                </div>
+                <hr className="mb-3" />
+                {logedin && (
+                  <form
+                    key={"Forma" + q.id}
+                    onSubmit={(e) =>
+                      submitHandler(q.id, q.question, q.thumbsup, e)
+                    }
+                  >
+                    <div key={"container1"} className="form-group">
+                      <label htmlFor="exampleInputPassword1">Your answer</label>
+                      <input
+                        key={"Answeeer" + q.id}
+                        type="text"
+                        className="form-control"
+                        id="exampleInputPassword1"
+                        placeholder="Answer"
+                        value={answer}
+                        onChange={(e) => setAnswer(e.target.value)}
+                      />
+                    </div>
+                    <button
+                      className="w-100 btn btn-lg btn-primary"
+                      type="submit"
+                      key={"button" + q.id}
+                    >
+                      Submit
+                    </button>
+                  </form>
+                )}
+                <h5 key={"Heading" + q.id} className="h5 mb-3 fw-normal">
+                  <strong>Previous answers:</strong>
+                </h5>
+                {q.answers.map((x, a) => {
+                  return (
+                    <p key={"Answer" + x.id}>
+                      {a + 1}: {x.Answer}
+                    </p>
+                  );
+                })}
+              </li>
+            );
+          })}
         <a href="/#/questions" onClick={onLoadMore}>
           Load More
         </a>

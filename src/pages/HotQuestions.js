@@ -55,15 +55,15 @@ const HotQuestions = () => {
   }
   return (
     <Fragment>
-      <h2><Link to='/'>Home Page</Link> &nbsp;|&nbsp; Hot Questions</h2>
+      <h2><Link to='/'>Home Page </Link> &nbsp;|&nbsp; 🔥 Hot Questions &nbsp;|&nbsp; <Link to='/most-active-users'>💯 Most active users </Link></h2>
       <ul>
         {question.sort((a,b) => { return b.thumbsup - a.thumbsup}).slice(0, loadmore).map((q) => {
           return (
             
             <li key={q.id}>
               <div className="border" >
-              <p className='question'  >{q.question}</p>
-              <p className='thumbsup' onClick={(e) => questionHandler(q.id, e)} >{q.thumbsup} Likes</p>
+              <p className='question'  ><strong>Question: &nbsp;</strong>{q.question}</p>
+              <p className='thumbsup' onClick={(e) => questionHandler(q.id, e)} ><strong>👍 &nbsp;{q.thumbsup}&nbsp;Likes</strong></p>
               </div>
               {/* {q.answers.map((a) => {
                 return <p key={a}>{a}</p>;

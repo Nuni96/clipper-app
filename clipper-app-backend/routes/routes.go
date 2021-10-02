@@ -14,6 +14,10 @@ func Setup(app *fiber.App) {
 	app.Get("/api/user", controllers.User)
 	app.Post("/api/logout", controllers.Logout)
 	app.Put("/api/admin", controllers.UpdateUser)
+	app.Post("/api/my-questions", controllers.MyQuestions)
+	app.Post("/api/my-questions", controllers.GetMyQuestions)
+	app.Put("/api/update-answer", controllers.UpdateAnswer)
+	app.Get("/api/active-users", controllers.GetMostActiveUsers)
 
 	//Questions routes
 	app.Get("/api/questions", controllers.GetAllQuestions)

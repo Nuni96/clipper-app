@@ -3,6 +3,7 @@ package controllers
 import (
 	"myapp/database"
 	"myapp/models"
+	"sort"
 	"strconv"
 	"time"
 
@@ -26,9 +27,10 @@ func Register(c *fiber.Ctx) error {
 		Lastname: data["lastname"],
 		Email:    data["email"],
 		Password: password,
+		Answers:  "0",
 	}
 
-	database.DB.Create(&user) //inserting user to database
+	database.DB.Preload("Questions").Create(&user) //inserting user to database
 
 	return c.JSON(user)
 }
@@ -41,7 +43,7 @@ func Login(c *fiber.Ctx) error {
 
 	var user models.User
 
-	database.DB.Where("email = ?", data["email"]).First(&user) //we get user based on email
+	database.DB.Where("email = ?", data["email"]).Preload("Questions").First(&user) //we get user based on email
 
 	if user.Id == 0 { //if we don't find a user we set status to not found
 		c.Status(fiber.StatusNotFound)
@@ -101,7 +103,7 @@ func User(c *fiber.Ctx) error {
 	claims := token.Claims.(*jwt.StandardClaims) //Get claims from token
 	var user models.User
 
-	database.DB.Where("id = ?", claims.Issuer).First(&user)
+	database.DB.Where("id = ?", claims.Issuer).Preload("Questions").First(&user)
 	return c.JSON(user)
 }
 
@@ -143,7 +145,7 @@ func UpdateUser(c *fiber.Ctx) error {
 	claims := token.Claims.(*jwt.StandardClaims) //Get claims from token
 	var user models.User
 
-	database.DB.Where("id = ?", claims.Issuer).First(&user)
+	database.DB.Where("id = ?", claims.Issuer).Preload("Questions").First(&user)
 	if user.Id == 0 { //if we don't find a user we set status to not found
 		c.Status(fiber.StatusNotFound)
 		return c.JSON(fiber.Map{
@@ -165,8 +167,77 @@ func UpdateUser(c *fiber.Ctx) error {
 	if len(user.Password) != 0 && len(data["password"]) != 0 {
 		user.Password = password
 	}
-	database.DB.Save(&user)
+	database.DB.Preload("Questions").Save(&user)
 	return c.JSON(fiber.Map{
 		"message": "success",
 	})
+}
+
+func MyQuestions(c *fiber.Ctx) error {
+	var data models.User
+	db := database.DB
+	if err := c.BodyParser(&data); err != nil { //get all request data we send
+		c.Status(fiber.StatusForbidden)
+		return c.JSON(fiber.Map{
+			"message": "Could not POST question",
+		})
+	}
+	var user models.User
+	db.Where("id = ?", data.Id).First(&user)
+	if user.Id == 0 { //if we don't find a user we set status to not found
+		c.Status(fiber.StatusNotFound)
+		return c.JSON(fiber.Map{
+			"message": "user not found",
+		})
+	}
+	user.Questions = data.Questions
+	db.Preload("Questions").Save(&user)
+	return c.JSON(user)
+}
+
+func GetMyQuestions(c *fiber.Ctx) error {
+	var data models.User
+	db := database.DB
+	if err := c.BodyParser(&data); err != nil { //get all request data we send
+		c.Status(fiber.StatusForbidden)
+		return c.JSON(fiber.Map{
+			"message": "Could not POST question",
+		})
+	}
+	var user models.User
+	db.Where("id = ?", data.Id).Preload("Questions").First(&user)
+	myquestions := user.Questions
+	return c.JSON(myquestions)
+
+}
+
+func UpdateAnswer(c *fiber.Ctx) error {
+	var data models.User
+	db := database.DB
+	if err := c.BodyParser(&data); err != nil { //get all request data we send
+		c.Status(fiber.StatusForbidden)
+		return c.JSON(fiber.Map{
+			"message": "Could not UPDATE Answer",
+		})
+	}
+	var question models.User
+	db.Where("id = ?", data.Id).First(&question)
+	temp, _ := strconv.Atoi(question.Answers)
+	temp++
+	question.Answers = strconv.Itoa(temp)
+	db.Preload("Questions").Save(&question)
+	return c.JSON(question)
+}
+
+func GetMostActiveUsers(c *fiber.Ctx) error {
+	db := database.DB
+	var active_users []models.User
+	db.Preload("Answers").Find(&active_users)
+
+	sort.Slice(active_users, func(i, j int) bool {
+		first, _ := strconv.Atoi(active_users[i].Answers)
+		second, _ := strconv.Atoi(active_users[j].Answers)
+		return first > second
+	})
+	return c.JSON(&active_users)
 }

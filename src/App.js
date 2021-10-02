@@ -9,12 +9,15 @@ import Admin from "./pages/Admin";
 import MyQuestions from "./pages/MyQuestions";
 import Questions from "./pages/Questions";
 import HotQuestions from "./pages/HotQuestions";
+import ActiveUsers from "./pages/ActiveUsers";
 /* const endpoint = 'https://clipper-app-mop.herokuapp.com';
  */
 function App() {
   const [logedin, setLogedin] = useState(false);
   const [name, setName] = useState("");
   const [lastname, setLastname] = useState("");
+  const [id, setId] = useState(0)
+  const [answers, setAnswers] = useState('')
   const [wrongMessage, setWrongmessage] = useState("");
   const [email, setEmail] = useState("");
 
@@ -32,6 +35,8 @@ function App() {
         setName(content.name);
         setLastname(content.lastname);
         setEmail(content.email);
+        setId(content.id)
+        setAnswers(content.answers)
       }
     })();
   }, [logedin, wrongMessage]);
@@ -49,8 +54,10 @@ function App() {
         setName(content.name);
         setLastname(content.lastname);
         setEmail(content.email);
+        setId(content.id)
+        setAnswers(content.answers)
       }
-      console.log(content.name, logedin, 'message' + wrongMessage);
+      console.log(content.id, content.name, logedin, 'message' + wrongMessage);
     })();
   });
   
@@ -129,8 +136,9 @@ function App() {
                   )}
                 ></Route>
                 <Route exact path='/hot-questions' component={()=><HotQuestions />} />
-                <Route path="/questions" component={() => <Questions logedin={logedin} />} />
-                <Route path="/my-questions" component={MyQuestions} />
+                <Route exact path='/most-active-users' component={()=><ActiveUsers />} />
+                <Route path="/questions" component={() => <Questions id3={id} name3={name} lastname3={lastname} email3={email} answers3={answers} logedin={logedin} />} />
+                <Route path="/my-questions" component={()=><MyQuestions id={id}/>} />
               </Switch>
             </div>
           </div>

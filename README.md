@@ -43,7 +43,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 1. Set up local instance of MySQL Database
   - go to clipper-app-backend/database/connection.go file
   - on line 15 change path to your database (local instance that you have set up in MySQL Workbench)
-  - you could use my path to online database like b2ca8f94b1c948:f885ad87@tcp(eu-cdbr-west-01.cleardb.com)/heroku_38e9cde3a9f4547   - IT IS NOT RECCOMMENDED TO USE REMOTE DATABASE SINCE IT IS FREE VERSION - HENCE IT IS TOO SLOW  
+  - you could use my path to online database like b2ca8f94b1c948:f885ad87@tcp(eu-cdbr-west-01.cleardb.com)/heroku_38e9cde3a9f4547\   - IT IS NOT RECCOMMENDED TO USE REMOTE DATABASE SINCE IT IS FREE VERSION - HENCE IT IS TOO SLOW  
   - should look like "username:password@/db_name"
   - verify that connection to database was made and tables are set
   - 

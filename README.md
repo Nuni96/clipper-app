@@ -47,12 +47,12 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
   - should look like "username:password@/db_name"
   - verify that connection to database was made and tables are set
   - 
-2. To run backend 
-   -cd clipper-app-backend
-   -go run main.go
+2. To run backend\
+   -cd clipper-app-backend\
+   -go run main.go\
    
-3. To run frontend
-   -npm start
+3. To run frontend\
+   -npm start\
 
 
 

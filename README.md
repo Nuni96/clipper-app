@@ -10,7 +10,7 @@ This project is using MySql Database
 
 ## Tasks not done:
 -Editing and deleting answers from current user\
--No notification when somebody answers users question\
+-No notification when somebody answers users question
 
 # Steps to run application: 
 1. Set up local instance of MySQL Database

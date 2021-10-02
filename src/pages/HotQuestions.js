@@ -40,7 +40,7 @@ const HotQuestions = () => {
   
   const questionHandler = async (q, e) => {
     e.preventDefault()
-    await fetch("http://localhost:8080/api/thumbsup",{
+    await fetch("127.0.0.1:8080/api/thumbsup",{
       method: 'PUT',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

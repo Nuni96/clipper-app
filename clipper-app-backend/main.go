@@ -1,23 +1,15 @@
 package main
 
 import (
-	"fmt"
 	"myapp/database"
 	"myapp/routes"
-	"os"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 )
 
 func main() {
-	port := os.Getenv("PORT")
-	if len(port) == 0 {
-		port = "8080"
-	}
-	fmt.Println(port)
-	dns := os.Getenv("DATABASE_URL")
-	fmt.Println(dns)
+
 	database.Connect()
 
 	app := fiber.New()
@@ -27,5 +19,5 @@ func main() {
 	})) //if we don't add this browser will not allow request
 
 	routes.Setup(app)
-	app.Listen(":" + port)
+	app.Listen(":8080")
 }

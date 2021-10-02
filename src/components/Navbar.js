@@ -6,7 +6,7 @@ const Navbar = ({ setLogedin, logedin, setWrongmessage }) => {
   let menu;
 
   const logout = async () => {
-    await fetch("http://localhost:8080/api/logout", {
+    await fetch("127.0.0.1:8080/api/logout", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",

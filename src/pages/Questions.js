@@ -47,7 +47,7 @@ const Questions = ({ logedin }) => {
 
   const submitQuestion = async (e) => {
     e.preventDefault();
-    await fetch("http://localhost:8080/api/questions", {
+    await fetch("127.0.0.1:8080/api/questions", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -60,7 +60,7 @@ const Questions = ({ logedin }) => {
   };
   const questionHandler = async (q, e) => {
     e.preventDefault()
-    await fetch("http://localhost:8080/api/thumsup",{
+    await fetch("127.0.0.1:8080/api/thumbsup",{
       method: 'PUT',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

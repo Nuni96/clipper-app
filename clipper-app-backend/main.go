@@ -1,10 +1,8 @@
 package main
 
 import (
-	"log"
 	"myapp/database"
 	"myapp/routes"
-	"os"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
@@ -13,8 +11,7 @@ import (
 func main() {
 
 	database.Connect()
-	port := os.Getenv("PORT")
-	log.Println(port)
+
 	app := fiber.New()
 
 	app.Use(cors.New(cors.Config{

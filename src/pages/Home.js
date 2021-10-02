@@ -25,7 +25,6 @@ import './Home.css'
   },
 ];
  */
-const port = 3306;
 /* const endpoint = 'https://clipper-app-mop.herokuapp.com';
  */
 const Home = () => {
@@ -37,7 +36,7 @@ const Home = () => {
   };
   useEffect(() => {
     (async () => {
-      const response = await fetch("127.0.0.1:8080/api/questions", {
+      const response = await fetch("http://localhost:8080/api/questions", {
         headers: { "Content-Type": "application/json" },
       });
       const content = await response.json()
@@ -51,7 +50,7 @@ const Home = () => {
   
   const questionHandler = async (q, e) => {
     e.preventDefault()
-    await fetch("127.0.0.1:8080/api/thumbsup",{
+    await fetch("http://localhost:8080/api/thumbsup",{
       method: 'PUT',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

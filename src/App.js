@@ -9,7 +9,6 @@ import Admin from "./pages/Admin";
 import MyQuestions from "./pages/MyQuestions";
 import Questions from "./pages/Questions";
 import HotQuestions from "./pages/HotQuestions";
-const port = process.env.PORT;
 /* const endpoint = 'https://clipper-app-mop.herokuapp.com';
  */
 function App() {
@@ -21,7 +20,7 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      const response = await fetch("127.0.0.1:8080/api/user", {
+      const response = await fetch("http://localhost:8080/api/user", {
         headers: { "Content-Type": "application/json" },
         credentials: "include",
       });
@@ -35,12 +34,11 @@ function App() {
         setEmail(content.email);
       }
     })();
-    console.log(port)
   }, [logedin, wrongMessage]);
 
   useEffect(() => {
     (async () => {
-      const response = await fetch("127.0.0.1:8080/api/user", {
+      const response = await fetch("http://localhost:8080/api/user", {
         headers: { "Content-Type": "application/json" },
         credentials: "include",
       });

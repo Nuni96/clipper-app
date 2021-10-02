@@ -39,7 +39,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 -Editing and deleting answers from current user\
 -No notification when somebody answers users question\
 
-Steps to run application: 
+# Steps to run application: 
 1. Set up local instance of MySQL Database
   - go to clipper-app-backend/database/connection.go file
   - on line 15 change path to your database (local instance that you have set up in MySQL Workbench)

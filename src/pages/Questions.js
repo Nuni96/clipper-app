@@ -61,7 +61,7 @@ const Questions = ({ logedin }) => {
   };
   const questionHandler = async (q, e) => {
     e.preventDefault()
-    await fetch(`eu-cdbr-west-01.cleardb.com:${port}/api/thumsup`,{
+    await fetch(`http://localhost:8080/api/thumsup`,{
       method: 'PUT',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

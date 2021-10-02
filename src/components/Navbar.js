@@ -8,7 +8,7 @@ const Navbar = ({ setLogedin, logedin, setWrongmessage }) => {
   let menu;
 
   const logout = async () => {
-    await fetch(`eu-cdbr-west-01.cleardb.com:${port}/api/logout`, {
+    await fetch(`http://localhost:8080/api/logout`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",

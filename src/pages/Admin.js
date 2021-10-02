@@ -3,7 +3,14 @@ import { Redirect } from "react-router";
 const port = 3306;
 /* const endpoint = 'https://clipper-app-mop.herokuapp.com';
  */
-const Admin = ({ name2, lastname2, email2, setName, setLastname, setEmail }) => {
+const Admin = ({
+  name2,
+  lastname2,
+  email2,
+  setName,
+  setLastname,
+  setEmail,
+}) => {
   const [name1, setName1] = useState("");
   const [lastname1, setLastname1] = useState("");
   const [email1, setEmail1] = useState("");
@@ -13,13 +20,13 @@ const Admin = ({ name2, lastname2, email2, setName, setLastname, setEmail }) => 
   const submitHandler = async (e) => {
     e.preventDefault();
     let data = {
-        name: name1,
-        lastname: lastname1,
-        email: email1,
-        password: password1,
-    }
-    console.log(name1,lastname1,email1,password1)
-    const response = await fetch(`eu-cdbr-west-01.cleardb.com:${port}/api/admin`, {
+      name: name1,
+      lastname: lastname1,
+      email: email1,
+      password: password1,
+    };
+    console.log(name1, lastname1, email1, password1);
+    const response = await fetch(`http://localhost:8080/api/admin`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
@@ -31,11 +38,11 @@ const Admin = ({ name2, lastname2, email2, setName, setLastname, setEmail }) => 
         data
       ),
     });
-    const content = await response.json()
-    console.log(content.message)
-    setName1('');
-    setLastname1('');
-    setEmail1('');
+    const content = await response.json();
+    console.log(content.message);
+    setName1("");
+    setLastname1("");
+    setEmail1("");
     setRedirect(true);
   };
   if (redirect) {
@@ -62,10 +69,12 @@ const Admin = ({ name2, lastname2, email2, setName, setLastname, setEmail }) => 
         </h5>
         <h5 className="h5 mb-3 fw-normal">
           **Change the fields you would like to edit. All fields must be filled.
-          Password is required. If you want to set a new password, simply
-          submit this form with new password!
+          Password is required. If you want to set a new password, simply submit
+          this form with new password!
         </h5>
-        <h5 className="h5 mb-3 fw-normal">***You will need to logout and login back again to update your info!</h5>
+        <h5 className="h5 mb-3 fw-normal">
+          ***You will need to logout and login back again to update your info!
+        </h5>
         <div className="form-floating">
           <input
             type="text"

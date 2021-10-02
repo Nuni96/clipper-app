@@ -49,10 +49,10 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
   - 
 2. To run backend\
    -cd clipper-app-backend\
-   -go run main.go\
+   -go run main.go
    
 3. To run frontend\
-   -npm start\
+   -npm start
 
 
 

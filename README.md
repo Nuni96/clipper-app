@@ -39,8 +39,21 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 -Editing and deleting answers from current user\
 -No notification when somebody answers users question\
 
+Steps to run application: 
+1. Set up local instance of MySQL Database
+  - go to clipper-app-backend/database/connection.go file
+  - on line 15 change path to your database (local instance that you have set up in MySQL Workbench)
+  - should look like "username:password@/db_name"
+  - verify that connection to database was made and tables are set
 
-To run backend 
+2. To run frontend
+### npm start
+
+3. To run backend 
+### cd clipper-app-backend
 ### go run main.go
-### backend is on [http://localhost:8080](http://localhost:8080)
 
+### backend is hosted on [http://localhost:8080](http://localhost:8080)
+
+
+Enjoy my first ReactJS-Golang-MySQL App built from scratch

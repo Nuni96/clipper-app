@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"log"
 	"myapp/database"
 	"myapp/routes"
 	"os"
@@ -14,7 +14,7 @@ func main() {
 
 	database.Connect()
 	port := os.Getenv("PORT")
-	fmt.Println(port)
+	log.Println(port)
 	app := fiber.New()
 
 	app.Use(cors.New(cors.Config{

@@ -35,8 +35,8 @@ const MyQuestions = ({ id }) => {
             return (
               <li key={q.id}>
                 <div className="border">
-                  <p className="question">{q.question}</p>
-                  <p className="thumbsup">{q.thumbsup} Likes</p>
+                  <p className="question"><strong>Question: &nbsp;</strong>{q.question}</p>
+                  <p className="thumbsup"><strong>👍 &nbsp;{q.thumbsup}&nbsp;Likes</strong></p>
                 </div>
                 {/* {q.answers.map((a) => {
               return <p key={a}>{a}</p>;

@@ -13,19 +13,20 @@ This project is using MySql Database
 -No notification when somebody answers users question
 
 # Steps to run application: 
-1. Set up local instance of MySQL Database
+1. Install node_modules in root directory by entering npm install in root directory
+
+2. Set up local instance of MySQL Database
   - go to clipper-app-backend/database/connection.go file
-  - on line 15 change path to your database (local instance that you have set up in MySQL Workbench)
-  - you could use my path to online database like b2ca8f94b1c948:f885ad87@tcp(eu-cdbr-west-01.cleardb.com)/heroku_38e9cde3a9f4547
-  - IT IS NOT RECCOMMENDED TO USE REMOTE DATABASE SINCE IT IS FREE VERSION - HENCE IT IS TOO SLOW  
+  - on line 15 change path to your database (local instance that you have set up in MySQL Workbench)  
   - should look like "username:password@/db_name"
   - verify that connection to database was made and tables are set
   - 
-2. To run backend\
+3. To run backend\
    -cd clipper-app-backend\
    -go run main.go
    
 3. To run frontend\
+   -open new terminal and in root directory type in terminal:
    -npm start
 
 

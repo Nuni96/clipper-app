@@ -23,11 +23,11 @@ This project is using MySql Database
   - verify that connection to database was made and tables are set in VScode by setting a new connection 
   
   
-3. To run backend\
-   - cd clipper-app-backend\
+3. To run backend
+   - cd clipper-app-backend
    - go run main.go
    
-4. To run frontend\
+4. To run frontend
    - open new terminal and in root directory type in terminal:
    - npm start
 

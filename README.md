@@ -16,7 +16,7 @@ This project is using MySql Database
 1. Install node_modules in root directory by entering npm install in root directory
 
 2. Set up local instance of MySQL Database\
-  -set up a local instance in MySQL Workbench
+  - set up a local instance in MySQL Workbench
   - go to clipper-app-backend/database/connection.go file
   - on line 15 change path to your database (local instance that you have set up in MySQL Workbench)  
   - should look like "username:password@/db_name"

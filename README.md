@@ -21,9 +21,9 @@ This project is using MySql Database
   - on line 15 change path to your database (local instance that you have set up in MySQL Workbench)  
   - should look like "username:password@/db_name"
 # Some examples of DB setup
-![prva slika](https://user-images.githubusercontent.com/58827636/135763265-66f0e783-b5e5-446f-b142-32a6dfc3b916.png)
+![prva slika](https://user-images.githubusercontent.com/58827636/135763265-66f0e783-b5e5-446f-b142-32a6dfc3b916.png)\
 Picture above shows how to setup a new connection with your local instance in MYSql Workbench
-![slika 2](https://user-images.githubusercontent.com/58827636/135763282-f7160bad-666f-4651-b750-83e2d2645224.png)
+![slika 2](https://user-images.githubusercontent.com/58827636/135763282-f7160bad-666f-4651-b750-83e2d2645224.png)\
 Setting up local instance in MYSql Workbench - After this simply create a new schema
 ![slika 3](https://user-images.githubusercontent.com/58827636/135763287-4deaea8c-a6b5-4cb9-9945-da08e29c9f07.png)
 

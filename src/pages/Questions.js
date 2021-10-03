@@ -94,6 +94,7 @@ const Questions = ({ logedin, name3, lastname3, id3, email3, answers3 }) => {
   };
   const questionHandler = async (q, e) => {
     e.preventDefault();
+    if(logedin){
     await fetch("http://localhost:8080/api/thumbsup", {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -102,6 +103,7 @@ const Questions = ({ logedin, name3, lastname3, id3, email3, answers3 }) => {
       }),
     });
     changeManage();
+  }
   };
   return (
     <Fragment>

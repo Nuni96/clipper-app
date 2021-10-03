@@ -135,10 +135,10 @@ function App() {
                     />
                   )}
                 ></Route>
-                <Route exact path='/hot-questions' component={()=><HotQuestions />} />
-                <Route exact path='/most-active-users' component={()=><ActiveUsers />} />
-                <Route path="/questions" component={() => <Questions id3={id} name3={name} lastname3={lastname} email3={email} answers3={answers} logedin={logedin} />} />
-                <Route path="/my-questions" component={()=><MyQuestions id={id}/>} />
+                <Route exact path='/hot-questions' component={()=><HotQuestions logedin={logedin}/>} />
+                <Route exact path='/most-active-users' component={()=><ActiveUsers logedin={logedin}/>} />
+                <Route path="/questions" component={() => <Questions logedin={logedin} id3={id} name3={name} lastname3={lastname} email3={email} answers3={answers}  />} />
+                <Route path="/my-questions" component={()=><MyQuestions logedin={logedin} id={id}/>} />
               </Switch>
             </div>
           </div>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import './Home.css'
 /* const endpoint = 'https://clipper-app-mop.herokuapp.com';
  */
-const HotQuestions = () => {
+const HotQuestions = ({logedin}) => {
     const [question, setQuestion] = useState([])
   const [manage, setManage] = useState(true);
   const [loadmore, setLoadmore] = useState(20)
@@ -40,6 +40,7 @@ const HotQuestions = () => {
   
   const questionHandler = async (q, e) => {
     e.preventDefault()
+    if(logedin){
     await fetch("http://localhost:8080/api/thumbsup",{
       method: 'PUT',
       headers: { "Content-Type": "application/json" },
@@ -48,6 +49,7 @@ const HotQuestions = () => {
       })
     })
     changeManage()
+  }
   }
 
   const onLoadMore = () => {

@@ -27,7 +27,7 @@ import './Home.css'
  */
 /* const endpoint = 'https://clipper-app-mop.herokuapp.com';
  */
-const Home = () => {
+const Home = ({logedin}) => {
   const [question, setQuestion] = useState([])
   const [manage, setManage] = useState(true);
   const [loadmore, setLoadmore] = useState(20)
@@ -50,6 +50,7 @@ const Home = () => {
   
   const questionHandler = async (q, e) => {
     e.preventDefault()
+    if(logedin){
     await fetch("http://localhost:8080/api/thumbsup",{
       method: 'PUT',
       headers: { "Content-Type": "application/json" },
@@ -58,6 +59,7 @@ const Home = () => {
       })
     })
     changeManage()
+  }
   }
 
   const onLoadMore = () => {

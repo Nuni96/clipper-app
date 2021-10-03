@@ -13,6 +13,8 @@ This project is using MySql Database
 -No notification when somebody answers users question
 
 # Steps to run application: 
+### git clone https://github.com/Nuni96/clipper-app
+
 1. Install node_modules in root directory by entering npm install in terminal (root directory)
 
 2. Set up local instance of MySQL Database

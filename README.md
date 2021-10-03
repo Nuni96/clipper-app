@@ -24,12 +24,12 @@ This project is using MySql Database
   
   
 3. To run backend\
-   -cd clipper-app-backend\
-   -go run main.go
+   - cd clipper-app-backend\
+   - go run main.go
    
 4. To run frontend\
-   -open new terminal and in root directory type in terminal:
-   -npm start
+   - open new terminal and in root directory type in terminal:
+   - npm start
 
 
 

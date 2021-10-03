@@ -13,7 +13,7 @@ This project is using MySql Database
 -No notification when somebody answers users question
 
 # Steps to run application: 
-1. Install node_modules in root directory by entering npm install in root directory
+1. Install node_modules in root directory by entering npm install in terminal (root directory)
 
 2. Set up local instance of MySQL Database
   - set up a local instance in MySQL Workbench

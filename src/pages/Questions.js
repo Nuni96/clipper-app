@@ -7,8 +7,8 @@ const Questions = ({ logedin, name3, lastname3, id3, email3, answers3 }) => {
   const [loadmore, setLoadmore] = useState(20);
   const [manage, setManage] = useState(true);
   const [newQuestion, setNewQuestion] = useState("");
-  const [answerValue, setAnswerValue] = useState("");
-  const changeManage = () => {
+/*   const [answerValue, setAnswerValue] = useState("");
+ */  const changeManage = () => {
     setManage(!manage);
   };
   useEffect(() => {
@@ -40,8 +40,8 @@ const Questions = ({ logedin, name3, lastname3, id3, email3, answers3 }) => {
       }),
     });
     setAnswer("");
-    setAnswerValue("");
-    console.log(answer);
+/*     setAnswerValue("");
+ */    console.log(answer);
     const content = await response.json();
     const response1 = await fetch("http://localhost:8080/api/update-answer", {
       method: "PUT",

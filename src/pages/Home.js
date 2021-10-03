@@ -43,9 +43,9 @@ const Home = () => {
       console.log(content)
       setQuestion(content)
     })()
-    /* return () => {
+    return () => {
       setQuestion([])
-    } */
+    }
   }, [manage])
   
   const questionHandler = async (q, e) => {
